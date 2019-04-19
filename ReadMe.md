@@ -14,7 +14,6 @@ Members：朱俊诚、赵胤松、查文森、菜源彬、张艺伟
 参与者：xxx、xxx
 
 **1、首页**
-![image.png](https://upload-images.jianshu.io/upload_images/195258-3db814a9318b9e65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 晚上 ，xxxx###
 主导者：xxxx
