@@ -12,6 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('catCoding.start', () => {
 			CatCodingPanel.createOrShow(context.extensionPath);
 		})
+		
 	);
 
 	context.subscriptions.push(
@@ -72,7 +73,16 @@ class CatCodingPanel {
 				localResourceRoots: [vscode.Uri.file(path.join(extensionPath, 'media'))]
 			}
 		);
-
+		// After 5sec, pragmatically close the webview panel
+		const timeout = setTimeout(() => panel.dispose(), 10000);
+		panel.onDidDispose(
+			() => {
+			  // Handle user closing panel before the 5sec have passed
+			  clearTimeout(timeout);
+			},
+			null
+			// context.subscriptions
+		  );
 		CatCodingPanel.currentPanel = new CatCodingPanel(panel, extensionPath);
 	}
 
@@ -187,9 +197,7 @@ class CatCodingPanel {
                 <title>Cat Coding</title>
             </head>
             <body>
-                <img src="${catGif}" width="300" />
-                <h1 id="lines-of-code-counter">0</h1>
-
+				<img src="${catGif}" width="300" />
                 <script nonce="${nonce}" src="${scriptUri}"></script>
             </body>
             </html>`;
