@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require_relative "../lib/compiler.rb"
+require 'thor'
+
+class KoonaCLI < Thor
+  desc "compile FILE", "compiles FILE to C"
+  long_desc <<-LONGDESC
+    `koona compile` will compile a file with valid koona grammer to C
+    which is then compiled to an executible using clang if `--clang` flag is set.
+    If not, koona will just compile to C.
+
+    The `--debug` flag will output the AST along with other debug information.
+  LONGDESC
+  option :debug, :type => :boolean
+  option :clang, :type => :boolean
+  def compile(file)
+    File.open("#{file.gsub('.kn', '.c')}", 'w') do |f|
+      f.puts Koona::Compiler.new.compile(file, options[:debug])
+    end
+    system "clang -g -o #{file.gsub('.kn', '')} #{file.gsub('.kn', '.c')}; " if options[:clang]
+  end
+end
+
+KoonaCLI.start(ARGV)
