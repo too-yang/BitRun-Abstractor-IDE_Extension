@@ -1,0 +1,79 @@
+{
+	"name": "configuration-sample",
+	"displayName": "Configuration Sample",
+	"description": "How to contribute and use configurations in VS Code",
+	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"engines": {
+		"vscode": "^1.29.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:config.commands.configureViewOnWindowOpen",
+		"onCommand:config.commands.configureEmptyLastLineCurrentFile",
+		"onCommand:config.commands.configureEmptyLastLineFiles"
+	],
+	"main": "./out/src/extension",
+	"keywords": [
+		"multi-root ready"
+	],
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Configuration Samples",
+				"properties": {
+					"conf.view.showOnWindowOpen": {
+						"type": "string",
+						"enum": [
+							"explorer",
+							"search",
+							"scm",
+							"debug",
+							"extensions"
+						],
+						"default": "explorer",
+						"description": "Window configuration: View to show always when a window opens",
+						"scope": "window"
+					},
+					"conf.resource.insertEmptyLastLine": {
+						"type": "object",
+						"default": {},
+						"description": "Resource configuration: Configure files using glob patterns to have an empty last line always",
+						"scope": "resource"
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"category": "Configuration Sample",
+				"command": "config.commands.configureViewOnWindowOpen",
+				"title": "Configure view to show on window open"
+			},
+			{
+				"category": "Configuration Sample",
+				"command": "config.commands.configureEmptyLastLineCurrentFile",
+				"title": "Configure empty last line for current file"
+			},
+			{
+				"category": "Configuration Sample",
+				"command": "config.commands.configureEmptyLastLineFiles",
+				"title": "Configure empty last line for files"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"@types/node": "*",
+		"tslint": "^5.11.0",
+		"typescript": "^2.1.4",
+		"vscode": "^1.1.17"
+	}
+}

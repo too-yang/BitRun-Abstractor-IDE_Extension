@@ -1,0 +1,130 @@
+{
+	"name": "vscode-terminal-api-example",
+	"displayName": "vscode-terminal-api-example",
+	"description": "abc",
+	"version": "0.0.1",
+	"publisher": "vscode-samples",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"enableProposedApi": true,
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:terminalTest.createAndSend",
+		"onCommand:terminalTest.createFakeShell",
+		"onCommand:terminalTest.createTerminal",
+		"onCommand:terminalTest.createZshLoginShell",
+		"onCommand:terminalTest.dimensions",
+		"onCommand:terminalTest.dispose",
+		"onCommand:terminalTest.hide",
+		"onCommand:terminalTest.onDidChangeTerminalDimensions",
+		"onCommand:terminalTest.onDidWriteData",
+		"onCommand:terminalTest.maximumDimensions",
+		"onCommand:terminalTest.processId",
+		"onCommand:terminalTest.sendText",
+		"onCommand:terminalTest.sendTextNoNewLine",
+		"onCommand:terminalTest.show",
+		"onCommand:terminalTest.showPreserveFocus",
+		"onCommand:terminalTest.terminalRendererCreate",
+		"onCommand:terminalTest.terminalRendererName",
+		"onCommand:terminalTest.terminalTest.terminalRendererWrite",
+		"onCommand:terminalTest.terminals"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "terminalTest.createAndSend",
+				"title": "Terminal API: Create Terminal and Immediately Send"
+			},
+			{
+				"command": "terminalTest.createFakeShell",
+				"title": "Terminal API: Create Fake Shell (with Terminal Renderer)"
+			},
+			{
+				"command": "terminalTest.createTerminal",
+				"title": "Terminal API: Create Terminal"
+			},
+			{
+				"command": "terminalTest.createZshLoginShell",
+				"title": "Terminal API: Create Terminal (zsh login shell)"
+			},
+			{
+				"command": "terminalTest.dimensions",
+				"title": "Terminal API: Set dimensions"
+			},
+			{
+				"command": "terminalTest.dispose",
+				"title": "Terminal API: Dispose"
+			},
+			{
+				"command": "terminalTest.hide",
+				"title": "Terminal API: Hide"
+			},
+			{
+				"command": "terminalTest.onDidWriteData",
+				"title": "Terminal API: Attach data listener"
+			},
+			{
+				"command": "terminalTest.onDidChangeTerminalDimensions",
+				"title": "Terminal API: Attach dimensions listener"
+			},
+			{
+				"command": "terminalTest.maximumDimensions",
+				"title": "Terminal API: Get maximum dimensions"
+			},
+			{
+				"command": "terminalTest.processId",
+				"title": "Terminal API: Get process ID"
+			},
+			{
+				"command": "terminalTest.sendText",
+				"title": "Terminal API: Send Text"
+			},
+			{
+				"command": "terminalTest.sendTextNoNewLine",
+				"title": "Terminal API: Send Text (no implied \\n)"
+			},
+			{
+				"command": "terminalTest.show",
+				"title": "Terminal API: Show"
+			},
+			{
+				"command": "terminalTest.showPreserveFocus",
+				"title": "Terminal API: Show (preserving focus)"
+			},
+			{
+				"command": "terminalTest.terminalRendererCreate",
+				"title": "Terminal API: Create Terminal Renderer"
+			},
+			{
+				"command": "terminalTest.terminalRendererName",
+				"title": "Terminal API: Set Terminal Renderer Name"
+			},
+			{
+				"command": "terminalTest.terminalRendererWrite",
+				"title": "Terminal API: Write to Terminal Renderer"
+			},
+			{
+				"command": "terminalTest.terminals",
+				"title": "Terminal API: View terminals"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint ./src/*.ts",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/node": "^6.0.40",
+		"tslint": "^5.11.0",
+		"typescript": "^2.0.3",
+		"vscode": "^1.1.22"
+	}
+}
