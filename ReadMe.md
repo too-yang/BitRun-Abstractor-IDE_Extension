@@ -20,19 +20,18 @@ Members：朱俊诚、赵胤松、查文森、蔡源彬、张艺伟
 通过这种方式，可以自动利用相应的综合知识和对应劳动力来改进每个代码。
 
 ### 技术难点说明
-* Name Translation:
+* **Name Translation:**
   难点之一是将值的命名从代码提供者的名称空间转换为需要修改者的名称空间。
- 
-* Data Structure Translation:
+
+* **Data Structure Translation:**
   难点二是将代码提供者的数据结构转换为需要修改者的数据结构。
   e.g. 代码提供者用数组储存数据，而需要修改者用队列储存数据，二者之间可能需要转换。
 
-* Donor Code Identification:
+* **Donor Code Identification:**
   难点三也是比较麻烦的一点，就是如何在数以万计的代码中找到符合需求的代码。
 
-* Insertion Point Identification:
+* **Insertion Point Identification:**
   难点四是找出需要替换代码的起始位置和终止位置。
-  
 ### 晚上 ，xxxxx ###
 主导者：xxx
 参与者：xxx
