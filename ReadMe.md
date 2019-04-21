@@ -5,8 +5,8 @@
 	Our work aims to package the complex programming details and left people more time to focus on something more important.
 ### why blockchain:
 	We want to build a low entropy system and solve three main problems:
-	版权问题、隐私问题、付费问题
- 	one more:  token贬值 ?!
+	CopyRight、Privacy、Payment
+ 	one more:  token depreciating ?!
 ### How:
 	Less is more. ONLY ONE CLICK	
 	
