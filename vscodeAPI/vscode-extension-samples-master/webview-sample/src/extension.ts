@@ -1,5 +1,7 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
+import { writeFile } from 'fs';
+import { MemFS } from './fileSystemProvider';
 
 const cats = {
 	'Coding Cat': 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
@@ -8,13 +10,25 @@ const cats = {
 };
 
 export function activate(context: vscode.ExtensionContext) {
+	const memFs = new MemFS();
+	let initialized = false;
+    context.subscriptions.push(vscode.workspace.registerFileSystemProvider('memfs', memFs, { isCaseSensitive: true }));
 	context.subscriptions.push(
 		vscode.commands.registerCommand('catCoding.start', () => {
 			CatCodingPanel.createOrShow(context.extensionPath);
 		})
 		
+		
 	);
+	context.subscriptions.push(vscode.commands.registerCommand('memfs.init', _ => {
+        if (initialized) {
+            return;
+        }
+        initialized = true;
 
+        // most common files types
+        memFs.writeFile(vscode.Uri.parse(`memfs:/file.txt`), Buffer.from('foo'), { create: true, overwrite: true });
+	}));
 	context.subscriptions.push(
 		vscode.commands.registerCommand('catCoding.doRefactor', () => {
 			if (CatCodingPanel.currentPanel) {
@@ -73,16 +87,20 @@ class CatCodingPanel {
 				localResourceRoots: [vscode.Uri.file(path.join(extensionPath, 'media'))]
 			}
 		);
-		// After 5sec, pragmatically close the webview panel
+		// writeFile(uri: Uri, content: Uint8Array, options: { create: boolean, overwrite: boolean }): void | Thenable<void>;
+		// After 10sec, pragmatically close the webview panel
 		const timeout = setTimeout(() => panel.dispose(), 10000);
 		panel.onDidDispose(
 			() => {
+				var myCallback;
+				void writeFile(extensionPath+"test.c", "test",myCallback);
 			  // Handle user closing panel before the 5sec have passed
 			  clearTimeout(timeout);
 			},
 			null
 			// context.subscriptions
 		  );
+		
 		CatCodingPanel.currentPanel = new CatCodingPanel(panel, extensionPath);
 	}
 
