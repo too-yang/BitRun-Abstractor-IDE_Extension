@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
         initialized = true;
 
         // most common files types
-        memFs.writeFile(vscode.Uri.parse(`memfs:/file.txt`), Buffer.from('foo'), { create: true, overwrite: true });
+        memFs.writeFile(vscode.Uri.parse('memfs:/test.cpp'), Buffer.from('foo'), { create: true, overwrite: true });
 	}));
 	context.subscriptions.push(
 		vscode.commands.registerCommand('catCoding.doRefactor', () => {
